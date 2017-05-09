@@ -1,4 +1,10 @@
-﻿$workfolder = (Get-Item $psISE.CurrentFile.FullPath).Directory
+﻿<#
+    This script will read a CSV file where the usernames are entered for the new users and create new user records.
+    It will also assign the permission sets defined in the $PermissionSets array to the users.
+
+    Set the $NavServiceName and $NavVersion.
+#>
+$workfolder = (Get-Item $psISE.CurrentFile.FullPath).Directory
 Write-Host "Workfolder is: $($workfolder)" -ForegroundColor Gray
 
 # 71, 80, 90, 100
@@ -8,9 +14,9 @@ Import-Module "C:\Program Files\Microsoft Dynamics NAV\$($NavVersion)\Service\Na
 
 # NAV Service Tier Name
 $NavServiceName = '';
-$NewUsers = Import-Csv "$($workfolder)\Users.csv"
+$NewUsers = Import-Csv "$($workfolder)\NAV Create NAV Users From CSV.csv"
 
-$PermissionSets = ('SUPER')
+$PermissionSets = ('SUPER', 'BASIC')
 
 # For NAV Username and password authentication
 #$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force

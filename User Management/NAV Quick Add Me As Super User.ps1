@@ -1,4 +1,9 @@
-﻿# NAV Service Tier Name
+﻿<#
+    This script will create a new a user record with the current user id and assign super permission set to the new user.
+    Set the $NavServiceName and $NavVersion.
+#>
+
+# NAV Service Tier Name
 $NavServiceName = '';
 
 # 71, 80, 90, 100
