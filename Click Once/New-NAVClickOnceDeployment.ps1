@@ -120,29 +120,29 @@
         cd $ApplicationfilesFolderPath -Verbose
 
         ## Update
-        $MAGEAPP_UPDATE_PARAMS = ("-Update " + "Microsoft.Dynamics.Nav.Client.exe.manifest"), "-FromDirectory ."
-        $Process = Start-process $MAGE -ArgumentList $MAGEAPP_UPDATE_PARAMS -RedirectStandardOutput $LogFile -Wait
-        $outputData = Get-Content $LogFile
-        Write-host -ForegroundColor Cyan $outputData
+        $MageParams = ("-Update " + "Microsoft.Dynamics.Nav.Client.exe.manifest"), "-FromDirectory ."
+        $Process = Start-process $Mage -ArgumentList $MageParams -RedirectStandardOutput $LogFile -Wait
+        $MageOutput = Get-Content $LogFile
+        Write-host -ForegroundColor Cyan $MageOutput
 
         ## Sign
-        $MAGEAPP_SIGN_PARAMS = ("-sign " + "Microsoft.Dynamics.Nav.Client.exe.manifest"), `
+        $MageParams = ("-sign " + "Microsoft.Dynamics.Nav.Client.exe.manifest"), `
                         ("-certfile " + $SigningPfxFile), `
                         ("-password " + $SigningPfxFilePassword)
-        $Process = Start-process $MAGE -ArgumentList $MAGEAPP_SIGN_PARAMS -RedirectStandardOutput $LogFile -Wait
-        $outputData = Get-Content $LogFile
-        Write-host -ForegroundColor Cyan $outputData
+        $Process = Start-process $Mage -ArgumentList $MageParams -RedirectStandardOutput $LogFile -Wait
+        $MageOutput = Get-Content $LogFile
+        Write-host -ForegroundColor Cyan $MageOutput
 
         # Update and Sign Deployment Manifest
         cd "$($DeploymentFolder)\Deployment" -Verbose
 
         ## Update
-        $MAGEDEP_UPDATE_PARAMS = ("-Update " + "Microsoft.Dynamics.Nav.Client.application"), `
+        $MageParams = ("-Update " + "Microsoft.Dynamics.Nav.Client.application"), `
                                  ("-appmanifest " + "$($ApplicationFolderName)/Microsoft.Dynamics.Nav.Client.exe.manifest"), `
                                  ("-appcodebase " + "$($DeploymentURL)/Deployment/$($ApplicationFolderName)/Microsoft.Dynamics.Nav.Client.exe.manifest")
-        $Process = Start-process $MAGE -ArgumentList $MAGEDEP_UPDATE_PARAMS -RedirectStandardOutput $LogFile -Wait
-        $outputData = Get-Content $LogFile
-        Write-host -ForegroundColor Cyan $outputData
+        $Process = Start-process $Mage -ArgumentList $MageParams -RedirectStandardOutput $LogFile -Wait
+        $MageOutput = Get-Content $LogFile
+        Write-host -ForegroundColor Cyan $MageOutput
 
         
         $PublisherName = "Microsoft Corporation and " + $PartnerName
@@ -162,11 +162,11 @@
 
 
         ## Sign
-        $MAGEDEP_SIGN_PARAMS = ("-sign " + "Microsoft.Dynamics.Nav.Client.application"), `
+        $MageParams = ("-sign " + "Microsoft.Dynamics.Nav.Client.application"), `
                        ("-certfile " + "$($SigningPfxFile)"), `
                        ("-password " + "$($SigningPfxFilePassword)")
-        $Process = Start-process $MAGE -ArgumentList $MAGEDEP_SIGN_PARAMS -RedirectStandardOutput $LogFile -Wait
-        $outputData = Get-Content $LogFile
-        Write-host -ForegroundColor Cyan $outputData
+        $Process = Start-process $Mage -ArgumentList $MageParams -RedirectStandardOutput $LogFile -Wait
+        $MageOutput = Get-Content $LogFile
+        Write-host -ForegroundColor Cyan $MageOutput
     }
 }
