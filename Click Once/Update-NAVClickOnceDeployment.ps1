@@ -1,10 +1,10 @@
-﻿function New-NAVClickOnceDeploymentOnIIS
+﻿function Update-NAVClickOnceDeployment
 {
     [CmdletBinding()]
     param(
         [parameter(Mandatory=$true)]
         [int] $NavVersion,
-
+        
         [parameter(Mandatory=$true)]
         [string] $DeploymentFolder,
 
@@ -27,55 +27,44 @@
         [string] $ClientUserSettingsFile,
 
         [parameter(Mandatory=$true)]
-        [string] $WebConfigFile,
+        [string] $ClickOnceVersion,
 
         [parameter(Mandatory=$true)]
-        [string] $PartnerName,
-
-        [parameter(Mandatory=$true)]
-        [string] $CustomerName,
-
-        [parameter(Mandatory=$true)]
-        [string] $ProductName
-
+        [string] $NewApplicationFilesFolderName
     )
 
     PROCESS
     {
-
         # Generate Setup Values
 
         ## Deployment Folder
-        $ApplicationFolderName = 'ApplicationFiles';
+        $ApplicationFolderName = $NewApplicationFilesFolderName
         $ApplicationfilesFolderPath = "$($DeploymentFolder)\Deployment\$($ApplicationFolderName)"
         $DeploymentFilePath = "$($DeploymentFolder)\Deployment\"
 
         ## NAV Client Folder
         $NavClientFolder = "C:\Program Files (x86)\Microsoft Dynamics NAV\$($NavVersion)\"
         $RoleTailoredClientFolder = "$($NavClientFolder)\RoleTailored Client"
-        $ClickOnceTemplateFolder = "$($NavClientFolder)\ClickOnce Installer Tools\TemplateFiles\"
+        $ClickOnceApplicationTemplateFolder = "$($NavClientFolder)\ClickOnce Installer Tools\TemplateFiles\Deployment\ApplicationFiles"
 
-        # Create Folder
-        mkdir $DeploymentFolder -Verbose
+        # Create new Application Files folder
+        mkdir $ApplicationfilesFolderPath -Verbose
 
         # Copy Files
 
-        ## Copy Template Files
-        cd $ClickOnceTemplateFolder
+        ## Copy Application Template Files
+        cd $ClickOnceApplicationTemplateFolder
         $Templatefiles = dir
         foreach($Templatefile in $Templatefiles)
         { 
-            Copy-Item -Path $Templatefile -Destination $DeploymentFolder -Recurse -Verbose
+            Copy-Item -Path $Templatefile -Destination $ApplicationfilesFolderPath -Recurse -Verbose
         }
-
-        ## Copy WebConfig
-        Copy-Item -Path $WebConfigFile -Destination $DeploymentFolder -Verbose
 
         ## Copy Client User Settings File
         Copy-Item -Path $ClientUserSettingsFile -Destination $ApplicationfilesFolderPath -Verbose
 
-        ## Copy Role Tailored Client Files        
 
+        ## Copy Role Tailored Client Files        
         Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.dll"                            -Destination "$ApplicationfilesFolderPath" -Verbose
         Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.Extensibility.dll"              -Destination "$ApplicationfilesFolderPath" -Verbose
         Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.Extensibility.xml"              -Destination "$ApplicationfilesFolderPath" -Verbose
@@ -125,6 +114,13 @@
         $MageOutput = Get-Content $LogFile
         Write-host -ForegroundColor Cyan $MageOutput
 
+        # Update the existing application manifest Assembly Identity version
+        $xml = [xml](Get-Content ("$($ApplicationfilesFolderPath)\Microsoft.Dynamics.Nav.Client.exe.manifest"))
+        $node = $xml.assembly.assemblyIdentity
+        $node.version = $ClickOnceVersion
+        $xml.Save("$($ApplicationfilesFolderPath)\Microsoft.Dynamics.Nav.Client.exe.manifest")
+
+
         ## Sign
         $MageParams = ("-sign " + "Microsoft.Dynamics.Nav.Client.exe.manifest"), `
                         ("-certfile " + $SigningPfxFile), `
@@ -144,23 +140,15 @@
         $MageOutput = Get-Content $LogFile
         Write-host -ForegroundColor Cyan $MageOutput
 
-        
-        $PublisherName = "Microsoft Corporation and " + $PartnerName
-        $DeploymentCodeBase = "$($DeploymentURL)/Deployment/Microsoft.Dynamics.Nav.Client.application"
-
         $xml = [xml](Get-Content ("$($DeploymentFilePath)\Microsoft.Dynamics.Nav.Client.application"))
-
+        
         $node = $xml.assembly.assemblyIdentity
-        $node.Name = $ProductName
-        $node = $xml.assembly.description
-        $node.publisher = $PublisherName
-        $node.product = $ProductName
-        $node = $xml.assembly.deployment.deploymentProvider
-        $node.codebase = $DeploymentCodeBase
+        $node.version = $ClickOnceVersion 
+        $node = $xml.assembly.deployment
+        $node.minimumRequiredVersion = $ClickOnceVersion     
 
-        $xml.Save("$($DeploymentFilePath)\Microsoft.Dynamics.Nav.Client.application")
-
-
+        $xml.Save("$($DeploymentFolder)\Deployment\Microsoft.Dynamics.Nav.Client.application")
+        
         ## Sign
         $MageParams = ("-sign " + "Microsoft.Dynamics.Nav.Client.application"), `
                        ("-certfile " + "$($SigningPfxFile)"), `
