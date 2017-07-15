@@ -5,7 +5,7 @@ function Export-DataRowCount
         [parameter(Mandatory=$true)]
         [array] $Databases,
         [parameter(Mandatory=$true)]
-        [array] $OutputFolder
+        [string] $OutputFolder
     )
 
     PROCESS
