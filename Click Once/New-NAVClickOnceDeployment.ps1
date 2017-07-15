@@ -1,4 +1,4 @@
-﻿function New-NAVClickOnceDeploymentOnIIS
+﻿function New-NAVClickOnceDeployment
 {
     [CmdletBinding()]
     param(

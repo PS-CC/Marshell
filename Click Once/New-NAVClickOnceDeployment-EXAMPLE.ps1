@@ -1,6 +1,6 @@
 ﻿. "C:\GitHub\Marshell\Click Once\New-NAVClickOnceDeployment.ps1"
 
-New-NAVClickOnceDeploymentOnIIS -NavVersion 100 `
+New-NAVClickOnceDeployment -NavVersion 100 `
                                 -DeploymentFolder 'C:\inetpub\wwwroot\ClickOnceDemo' `
                                 -DeploymentURL 'http://localhost/ClickOnceDemo' `
                                 -LogFile 'C:\Deployment\log.txt' `
