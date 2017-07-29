@@ -17,4 +17,4 @@ write-host "Add $($me) as a user" -ForegroundColor Cyan
 New-NAVServerUser -ServerInstance $NavServiceName -WindowsAccount $me
 
 write-host "Assign super permission to $($me)" -ForegroundColor Cyan
-New-NAVServerUserPermissionSet  -ServerInstance $NavServiceName -WindowsAccount $me -PermissionSetId SUPER
+New-NAVServerUserPermissionSet  -ServerInstance $NavServiceName -WindowsAccount $me -PermissionSetId 'SUPER'
