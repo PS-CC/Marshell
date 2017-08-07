@@ -1,6 +1,6 @@
 . "C:\YourFolder\Get-NavServicesRemotely.ps1"
 
-$Servers = ('NAVSERV2016SERVER1', 'NAVSERV2016SERVER2')
+$Servers = ('localhost')
 $NavServices = Get-NavServicesRemotely -NavVersion 90 -Severs $Servers
 
 $Excel = New-Object -ComObject Excel.Application
