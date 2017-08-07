@@ -1,7 +1,5 @@
 function Import-NavUsersFromCSV
 {
-  
-
     [CmdletBinding()]
     Param(
         [parameter(Mandatory=$true)]
