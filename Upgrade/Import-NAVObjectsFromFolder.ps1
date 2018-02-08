@@ -27,12 +27,13 @@ function Import-NAVObjectsFromFolder
             Import-NAVApplicationObject -Path $ObjectFile.FullName `
                                         -DatabaseName $Database `
                                         -DatabaseServer $DatabaseServer `
-                                        -ImportAction Overwrite
+                                        -ImportAction Overwrite `
                                         -Confirm:$false
 
             if ($DoneFolder -ne "")
             {
-                if (Copy-Item -Path $ObjectFile.FullName -Destination "$($DoneFolder)\$($ObjectFile.Name)")
+                Copy-Item -Path $ObjectFile.FullName -Destination "$($DoneFolder)\$($ObjectFile.Name)"
+                if (Test-Path -Path "$($DoneFolder)\$($ObjectFile.Name)")
                 {
                     Remove-Item -Path $ObjectFile.FullName
                 }
