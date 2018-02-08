@@ -28,7 +28,6 @@ function Export-DataRowCount
                 $Line = "$($table.Name), $($table.RowCount)";
                 $Line | Add-Content $OutputFile;   
                 
-                
                 # Progress Bar
                 $Step++; 
                 $Percent = ($Step/($Tables.Count/100));

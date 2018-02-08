@@ -37,8 +37,7 @@ foreach ($Server in $Servers)
         $currentWorkSheet.Cells.Item($lineNo,3) = $NavService.DatabaseInstance
         $currentWorkSheet.Cells.Item($lineNo,4) = $NavService.DatabaseName
         $currentWorkSheet.Cells.Item($lineNo,5) = $NavService.ServiceAccount
-        $currentWorkSheet.Cells.Item($lineNo,6) = $NavService.State
-        
+        $currentWorkSheet.Cells.Item($lineNo,6) = $NavService.State   
     }
 
 }
