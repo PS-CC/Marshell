@@ -109,6 +109,8 @@
         Copy-Item "$RoleTailoredClientFolder\Office.dll"                                                     -Destination "$ApplicationfilesFolderPath" -Verbose
         Copy-Item "$RoleTailoredClientFolder\RapidStart.ico"                                                 -Destination "$ApplicationfilesFolderPath" -Verbose
         Copy-Item "$RoleTailoredClientFolder\System.Collections.Immutable.dll"                               -Destination "$ApplicationfilesFolderPath" -Verbose
+        Copy-Item "$RoleTailoredClientFolder\Microsoft.ReportViewer.*"                                       -Destination "$ApplicationfilesFolderPath" -Verbose
+        
         Copy-Item "$RoleTailoredClientFolder\Add-ins"                                                        -Destination "$ApplicationfilesFolderPath\Add-ins" -Recurse -Verbose
         Copy-Item "$RoleTailoredClientFolder\Images"                                                         -Destination "$ApplicationfilesFolderPath\Images"  -Recurse -Verbose
         Get-ChildItem -Path "$RoleTailoredClientFolder\??-??" -Directory | % {
