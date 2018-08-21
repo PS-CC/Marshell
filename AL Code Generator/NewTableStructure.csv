@@ -1,0 +1,4 @@
+Id,Name,DataType,Caption,Comment
+1,No.,Code[20],No.,Not Blank
+2,Name,Text[50],Name,
+3,Age,Integer,Age,Minimum 1
