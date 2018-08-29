@@ -23,20 +23,20 @@ function New-FieldForALTable
                 $FieldName = """$($Field.Name)"""
             }
 
-            "field($($Field.Id);$($FieldName);$($Field.DataType))" | Add-Content $NewCodeFile
-            "{" | Add-Content $NewCodeFile
+            "$($Tab)field($($Field.Id);$($FieldName);$($Field.DataType))" | Add-Content $NewCodeFile
+            "$($Tab){" | Add-Content $NewCodeFile
 
             if ($Field.Caption -ne "")
             {
-                "$($Tab)CaptionML = ENG='$($Field.Caption)',ENU='$($Field.Caption)';" | Add-Content $NewCodeFile                
+                "$($Tab)$($Tab)CaptionML = ENG='$($Field.Caption)',ENU='$($Field.Caption)';" | Add-Content $NewCodeFile                
             }
 
             if ($Field.Comment -ne "")
             {
-                "$($Tab)// $($Field.Comment)" | Add-Content $NewCodeFile
-                "$($Tab)DataClassification = ToBeClassified;" | Add-Content $NewCodeFile
+                "$($Tab)$($Tab)// $($Field.Comment)" | Add-Content $NewCodeFile
+                "$($Tab)$($Tab)DataClassification = ToBeClassified;" | Add-Content $NewCodeFile
             }
-            "}" | Add-Content $NewCodeFile
+            "$($Tab)}" | Add-Content $NewCodeFile
         }
     }
 }   
