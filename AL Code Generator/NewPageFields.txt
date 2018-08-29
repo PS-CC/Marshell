@@ -1,0 +1,3 @@
+field("No.";"No."){} //	Not Blank
+field(Name;Name){} //	
+field(Age;Age){} //	Minimum 1
