@@ -1,19 +1,16 @@
 field(1;"No.";Code[20])
 {
-   CaptionML = ENG='No.',
-               ENU='No.';
-   // Not Blank
-   DataClassification = ToBeClassified;
+	CaptionML = ENG='No.',ENU='No.';
+	// Not Blank
+	DataClassification = ToBeClassified;
 }
 field(2;Name;Text[50])
 {
-   CaptionML = ENG='Name',
-               ENU='Name';
+	CaptionML = ENG='Name',ENU='Name';
 }
 field(3;Age;Integer)
 {
-   CaptionML = ENG='Age',
-               ENU='Age';
-   // Minimum 1
-   DataClassification = ToBeClassified;
+	CaptionML = ENG='Age',ENU='Age';
+	// Minimum 1
+	DataClassification = ToBeClassified;
 }

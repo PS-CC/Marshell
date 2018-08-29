@@ -12,6 +12,7 @@ function New-FieldForALTable
     {
         $TableDefinition = Import-Csv $TableDefinitionCsvFile        
         New-Item -Path $NewCodeFile -ItemType File -Force
+        $Tab = [char]9
 
         foreach ($Field in $TableDefinition)
         {
@@ -27,14 +28,13 @@ function New-FieldForALTable
 
             if ($Field.Caption -ne "")
             {
-                "   CaptionML = ENG='$($Field.Caption)'," | Add-Content $NewCodeFile
-                "               ENU='$($Field.Caption)';" | Add-Content $NewCodeFile
+                "$($Tab)CaptionML = ENG='$($Field.Caption)',ENU='$($Field.Caption)';" | Add-Content $NewCodeFile                
             }
 
             if ($Field.Comment -ne "")
             {
-                "   // $($Field.Comment)" | Add-Content $NewCodeFile
-                "   DataClassification = ToBeClassified;" | Add-Content $NewCodeFile
+                "$($Tab)// $($Field.Comment)" | Add-Content $NewCodeFile
+                "$($Tab)DataClassification = ToBeClassified;" | Add-Content $NewCodeFile
             }
             "}" | Add-Content $NewCodeFile
         }
