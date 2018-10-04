@@ -1,0 +1,80 @@
+tableelement(CustLedgerEntry; "Cust. Ledger Entry")
+{
+	fieldelement(EntryNo; CustLedgerEntry."Entry No.") { }
+	fieldelement(CustomerNo; CustLedgerEntry."Customer No.") { }
+	fieldelement(PostingDate; CustLedgerEntry."Posting Date") { }
+	fieldelement(DocumentType; CustLedgerEntry."Document Type") { }
+	fieldelement(DocumentNo; CustLedgerEntry."Document No.") { }
+	fieldelement(Description; CustLedgerEntry."Description") { }
+	fieldelement(CurrencyCode; CustLedgerEntry."Currency Code") { }
+	fieldelement(Amount; CustLedgerEntry."Amount") { }
+	fieldelement(RemainingAmount; CustLedgerEntry."Remaining Amount") { }
+	fieldelement(OriginalAmtLCY; CustLedgerEntry."Original Amt. (LCY)") { }
+	fieldelement(RemainingAmtLCY; CustLedgerEntry."Remaining Amt. (LCY)") { }
+	fieldelement(AmountLCY; CustLedgerEntry."Amount (LCY)") { }
+	fieldelement(SalesLCY; CustLedgerEntry."Sales (LCY)") { }
+	fieldelement(ProfitLCY; CustLedgerEntry."Profit (LCY)") { }
+	fieldelement(InvDiscountLCY; CustLedgerEntry."Inv. Discount (LCY)") { }
+	fieldelement(SelltoCustomerNo; CustLedgerEntry."Sell-to Customer No.") { }
+	fieldelement(CustomerPostingGroup; CustLedgerEntry."Customer Posting Group") { }
+	fieldelement(GlobalDimensionCode; CustLedgerEntry."Global Dimension 1 Code") { }
+	fieldelement(GlobalDimensionCode; CustLedgerEntry."Global Dimension 2 Code") { }
+	fieldelement(SalespersonCode; CustLedgerEntry."Salesperson Code") { }
+	fieldelement(UserID; CustLedgerEntry."User ID") { }
+	fieldelement(SourceCode; CustLedgerEntry."Source Code") { }
+	fieldelement(OnHold; CustLedgerEntry."On Hold") { }
+	fieldelement(AppliestoDocType; CustLedgerEntry."Applies-to Doc. Type") { }
+	fieldelement(AppliestoDocNo; CustLedgerEntry."Applies-to Doc. No.") { }
+	fieldelement(Open; CustLedgerEntry."Open") { }
+	fieldelement(DueDate; CustLedgerEntry."Due Date") { }
+	fieldelement(PmtDiscountDate; CustLedgerEntry."Pmt. Discount Date") { }
+	fieldelement(OriginalPmtDiscPossible; CustLedgerEntry."Original Pmt. Disc. Possible") { }
+	fieldelement(PmtDiscGivenLCY; CustLedgerEntry."Pmt. Disc. Given (LCY)") { }
+	fieldelement(Positive; CustLedgerEntry."Positive") { }
+	fieldelement(ClosedbyEntryNo; CustLedgerEntry."Closed by Entry No.") { }
+	fieldelement(ClosedatDate; CustLedgerEntry."Closed at Date") { }
+	fieldelement(ClosedbyAmount; CustLedgerEntry."Closed by Amount") { }
+	fieldelement(AppliestoID; CustLedgerEntry."Applies-to ID") { }
+	fieldelement(JournalBatchName; CustLedgerEntry."Journal Batch Name") { }
+	fieldelement(ReasonCode; CustLedgerEntry."Reason Code") { }
+	fieldelement(BalAccountType; CustLedgerEntry."Bal. Account Type") { }
+	fieldelement(BalAccountNo; CustLedgerEntry."Bal. Account No.") { }
+	fieldelement(TransactionNo; CustLedgerEntry."Transaction No.") { }
+	fieldelement(ClosedbyAmountLCY; CustLedgerEntry."Closed by Amount (LCY)") { }
+	fieldelement(DebitAmount; CustLedgerEntry."Debit Amount") { }
+	fieldelement(CreditAmount; CustLedgerEntry."Credit Amount") { }
+	fieldelement(DebitAmountLCY; CustLedgerEntry."Debit Amount (LCY)") { }
+	fieldelement(CreditAmountLCY; CustLedgerEntry."Credit Amount (LCY)") { }
+	fieldelement(DocumentDate; CustLedgerEntry."Document Date") { }
+	fieldelement(ExternalDocumentNo; CustLedgerEntry."External Document No.") { }
+	fieldelement(CalculateInterest; CustLedgerEntry."Calculate Interest") { }
+	fieldelement(ClosingInterestCalculated; CustLedgerEntry."Closing Interest Calculated") { }
+	fieldelement(NoSeries; CustLedgerEntry."No. Series") { }
+	fieldelement(ClosedbyCurrencyCode; CustLedgerEntry."Closed by Currency Code") { }
+	fieldelement(ClosedbyCurrencyAmount; CustLedgerEntry."Closed by Currency Amount") { }
+	fieldelement(AdjustedCurrencyFactor; CustLedgerEntry."Adjusted Currency Factor") { }
+	fieldelement(OriginalCurrencyFactor; CustLedgerEntry."Original Currency Factor") { }
+	fieldelement(OriginalAmount; CustLedgerEntry."Original Amount") { }
+	fieldelement(DateFilter; CustLedgerEntry."Date Filter") { }
+	fieldelement(RemainingPmtDiscPossible; CustLedgerEntry."Remaining Pmt. Disc. Possible") { }
+	fieldelement(PmtDiscToleranceDate; CustLedgerEntry."Pmt. Disc. Tolerance Date") { }
+	fieldelement(MaxPaymentTolerance; CustLedgerEntry."Max. Payment Tolerance") { }
+	fieldelement(LastIssuedReminderLevel; CustLedgerEntry."Last Issued Reminder Level") { }
+	fieldelement(AcceptedPaymentTolerance; CustLedgerEntry."Accepted Payment Tolerance") { }
+	fieldelement(AcceptedPmtDiscTolerance; CustLedgerEntry."Accepted Pmt. Disc. Tolerance") { }
+	fieldelement(PmtToleranceLCY; CustLedgerEntry."Pmt. Tolerance (LCY)") { }
+	fieldelement(AmounttoApply; CustLedgerEntry."Amount to Apply") { }
+	fieldelement(ICPartnerCode; CustLedgerEntry."IC Partner Code") { }
+	fieldelement(ApplyingEntry; CustLedgerEntry."Applying Entry") { }
+	fieldelement(Reversed; CustLedgerEntry."Reversed") { }
+	fieldelement(ReversedbyEntryNo; CustLedgerEntry."Reversed by Entry No.") { }
+	fieldelement(ReversedEntryNo; CustLedgerEntry."Reversed Entry No.") { }
+	fieldelement(Prepayment; CustLedgerEntry."Prepayment") { }
+	fieldelement(PaymentMethodCode; CustLedgerEntry."Payment Method Code") { }
+	fieldelement(AppliestoExtDocNo; CustLedgerEntry."Applies-to Ext. Doc. No.") { }
+	fieldelement(RecipientBankAccount; CustLedgerEntry."Recipient Bank Account") { }
+	fieldelement(MessagetoRecipient; CustLedgerEntry."Message to Recipient") { }
+	fieldelement(ExportedtoPaymentFile; CustLedgerEntry."Exported to Payment File") { }
+	fieldelement(DimensionSetID; CustLedgerEntry."Dimension Set ID") { }
+	fieldelement(DirectDebitMandateID; CustLedgerEntry."Direct Debit Mandate ID") { }
+}

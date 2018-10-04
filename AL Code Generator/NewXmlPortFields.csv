@@ -1,0 +1,78 @@
+FieldName
+Entry No.
+Customer No.
+Posting Date
+Document Type
+Document No.
+Description
+Currency Code
+Amount
+Remaining Amount
+Original Amt. (LCY)
+Remaining Amt. (LCY)
+Amount (LCY)
+Sales (LCY)
+Profit (LCY)
+Inv. Discount (LCY)
+Sell-to Customer No.
+Customer Posting Group
+Global Dimension 1 Code
+Global Dimension 2 Code
+Salesperson Code
+User ID
+Source Code
+On Hold
+Applies-to Doc. Type
+Applies-to Doc. No.
+Open
+Due Date
+Pmt. Discount Date
+Original Pmt. Disc. Possible
+Pmt. Disc. Given (LCY)
+Positive
+Closed by Entry No.
+Closed at Date
+Closed by Amount
+Applies-to ID
+Journal Batch Name
+Reason Code
+Bal. Account Type
+Bal. Account No.
+Transaction No.
+Closed by Amount (LCY)
+Debit Amount
+Credit Amount
+Debit Amount (LCY)
+Credit Amount (LCY)
+Document Date
+External Document No.
+Calculate Interest
+Closing Interest Calculated
+No. Series
+Closed by Currency Code
+Closed by Currency Amount
+Adjusted Currency Factor
+Original Currency Factor
+Original Amount
+Date Filter
+Remaining Pmt. Disc. Possible
+Pmt. Disc. Tolerance Date
+Max. Payment Tolerance
+Last Issued Reminder Level
+Accepted Payment Tolerance
+Accepted Pmt. Disc. Tolerance
+Pmt. Tolerance (LCY)
+Amount to Apply
+IC Partner Code
+Applying Entry
+Reversed
+Reversed by Entry No.
+Reversed Entry No.
+Prepayment
+Payment Method Code
+Applies-to Ext. Doc. No.
+Recipient Bank Account
+Message to Recipient
+Exported to Payment File
+Dimension Set ID
+Direct Debit Mandate ID
