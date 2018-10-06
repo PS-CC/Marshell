@@ -1,12 +1,13 @@
 . "C:\GitHub\Marshell\Click Once\Update-NAVClickOnceDeployment.ps1"
 
-Update-NAVClickOnceDeployment -NavVersion 100 `
-                             -DeploymentFolder 'C:\inetpub\wwwroot\ClickOnceDemo' `
-                             -DeploymentURL 'http://localhost/ClickOnceDemo'  `
-                             -LogFile 'C:\Deployment\log.txt' `
-                             -Mage 'C:\Deployment\mage.exe' `
-                             -SigningPfxFile 'C:\Deployment\ClickOnceSignature.pfx' `
+$Folder = "C:\Deployment"
+Update-NAVClickOnceDeployment -NavVersion 130 `
+                             -DeploymentFolder 'C:\inetpub\wwwroot\BCClickOnceDemo' `
+                             -DeploymentURL 'http://localhost/BCClickOnceDemo'  `
+                             -LogFile "$($Folder)\log.txt" `
+                             -Mage "$($Folder)\mage.exe" `
+                             -SigningPfxFile "$($Folder)\ClickOnceSignature.pfx" `
                              -SigningPfxFilePassword 'clickoncesignaturepassword' `
-                             -ClientUserSettingsFile 'C:\Deployment\ClientUserSettings.config' `
-                             -ClickOnceVersion "10.0.0.1" `
+                             -ClientUserSettingsFile "$($Folder)\ClientUserSettings.config" `
+                             -ClickOnceVersion "13.0.0.1" `
                              -NewApplicationFilesFolderName 'ApplicationFiles2'

@@ -1,14 +1,15 @@
 ﻿. "C:\GitHub\Marshell\Click Once\New-NAVClickOnceDeployment.ps1"
 
-New-NAVClickOnceDeployment -NavVersion 100 `
-                                -DeploymentFolder 'C:\inetpub\wwwroot\ClickOnceDemo' `
-                                -DeploymentURL 'http://localhost/ClickOnceDemo' `
-                                -LogFile 'C:\Deployment\log.txt' `
-                                -Mage "C:\Deployment\mage.exe" `
-                                -SigningPfxFile "C:\Deployment\ClickOnceSignature.pfx" `
+$Folder = "C:\Deployment"
+New-NAVClickOnceDeployment -NavVersion 130 `
+                                -DeploymentFolder 'C:\inetpub\wwwroot\BCClickOnceDemo' `
+                                -DeploymentURL 'http://localhost/BCClickOnceDemo' `
+                                -LogFile "$($Folder)\log.txt" `
+                                -Mage "$($Folder)\mage.exe" `
+                                -SigningPfxFile "$($Folder)\ClickOnceSignature.pfx" `
                                 -SigningPfxFilePassword 'clickoncesignaturepassword' `
-                                -ClientUserSettingsFile "C:\Deployment\ClientUserSettings.config" `
-                                -WebConfigFile "C:\Deployment\web.config" `
+                                -ClientUserSettingsFile "$($Folder)\ClientUserSettings.config" `
+                                -WebConfigFile "$($Folder)\web.config" `
                                 -PartnerName 'Marcellus' `
                                 -CustomerName 'NorthWind' `
-                                -ProductName 'NAV 2017 DEMO'
+                                -ProductName 'Business Central DEMO'

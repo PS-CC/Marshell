@@ -51,7 +51,13 @@
         $DeploymentFilePath = "$($DeploymentFolder)\Deployment\"
 
         ## NAV Client Folder
-        $NavClientFolder = "C:\Program Files (x86)\Microsoft Dynamics NAV\$($NavVersion)\"
+        if (110 -ge $NavVersion)
+        {
+            $NavClientFolder = "C:\Program Files (x86)\Microsoft Dynamics NAV\$($NavVersion)\"
+        }else
+        {
+            $NavClientFolder = "C:\Program Files (x86)\Microsoft Dynamics 365 Business Central\$($NavVersion)\"
+        }
         $RoleTailoredClientFolder = "$($NavClientFolder)\RoleTailored Client"
         $ClickOnceTemplateFolder = "$($NavClientFolder)\ClickOnce Installer Tools\TemplateFiles\"
 
@@ -75,47 +81,21 @@
         Copy-Item -Path $ClientUserSettingsFile -Destination $ApplicationfilesFolderPath -Verbose
 
         ## Copy Role Tailored Client Files        
+        Copy-Item "$RoleTailoredClientFolder\RapidStart.ico"                           -Destination "$ApplicationfilesFolderPath" -Verbose
+        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.exe"        -Destination "$ApplicationfilesFolderPath" -Verbose
+        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.exe.config" -Destination "$ApplicationfilesFolderPath" -Verbose
+        Copy-Item "$RoleTailoredClientFolder\*.dll"                                    -Destination "$ApplicationfilesFolderPath" -Verbose
 
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.dll"                            -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.Extensibility.dll"              -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.Extensibility.xml"              -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.Navigation.dll"                 -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.UX2006.dll"                     -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.UX2006.WinForms.dll"            -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.Windows.dll"                    -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.WinForms.Controls.dll"          -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.WinForms.DataVisualization.dll" -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Framework.UI.WinForms.dll"                   -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.Builder.dll"                      -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.exe"                              -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.exe.config"                       -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.ServiceConnection.dll"            -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.UI.dll"                           -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.WinClient.dll"                    -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.WinForms.dll"                     -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.DocumentService.dll"                     -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.DocumentService.Types.dll"               -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Language.dll"                            -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.OpenXml.dll"                             -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.SharePointOnlineDocumentService.dll"     -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Types.dll"                               -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Types.Report.dll"                        -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Watson.dll"                              -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Office.Interop.Excel.dll"                             -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Office.Interop.OneNote.dll"                           -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Office.Interop.Outlook.dll"                           -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.Office.Interop.Word.dll"                              -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Newtonsoft.Json.dll"                                            -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Office.dll"                                                     -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\RapidStart.ico"                                                 -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\System.Collections.Immutable.dll"                               -Destination "$ApplicationfilesFolderPath" -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Microsoft.ReportViewer.*"                                       -Destination "$ApplicationfilesFolderPath" -Verbose
-        
-        Copy-Item "$RoleTailoredClientFolder\Add-ins"                                                        -Destination "$ApplicationfilesFolderPath\Add-ins" -Recurse -Verbose
-        Copy-Item "$RoleTailoredClientFolder\Images"                                                         -Destination "$ApplicationfilesFolderPath\Images"  -Recurse -Verbose
+        Copy-Item "$RoleTailoredClientFolder\Add-ins"                                  -Destination "$ApplicationfilesFolderPath\Add-ins" -Recurse -Verbose
+        Copy-Item "$RoleTailoredClientFolder\Images"                                   -Destination "$ApplicationfilesFolderPath\Images"  -Recurse -Verbose
         Get-ChildItem -Path "$RoleTailoredClientFolder\??-??" -Directory | % {
             $Name = $_.Name
             Copy-Item "$RoleTailoredClientFolder\$Name" -Destination "$ApplicationfilesFolderPath\$Name" -Recurse -Verbose
+        }
+
+        if (Test-Path -Path "$ApplicationfilesFolderPath\Add-ins\Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
+        {
+            Remove-Item -Path "$ApplicationfilesFolderPath\Add-ins\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
         }
 
         # Update and Sign Application Manifest
