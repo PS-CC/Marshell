@@ -86,7 +86,8 @@
         Copy-Item "$RoleTailoredClientFolder\Microsoft.Dynamics.Nav.Client.exe.config" -Destination "$ApplicationfilesFolderPath" -Verbose
         Copy-Item "$RoleTailoredClientFolder\*.dll"                                    -Destination "$ApplicationfilesFolderPath" -Verbose
 
-        Copy-Item "$RoleTailoredClientFolder\Add-ins"                                  -Destination "$ApplicationfilesFolderPath\Add-ins" -Recurse -Verbose
+        Copy-Item "$RoleTailoredClientFolder\Add-ins"                                  -Destination "$ApplicationfilesFolderPath\Add-ins" -Recurse -Verbose        
+        Copy-Item "$RoleTailoredClientFolder\SLT"                                      -Destination "$ApplicationfilesFolderPath\SLT" -Recurse -Verbose
         Copy-Item "$RoleTailoredClientFolder\Images"                                   -Destination "$ApplicationfilesFolderPath\Images"  -Recurse -Verbose
         Get-ChildItem -Path "$RoleTailoredClientFolder\??-??" -Directory | % {
             $Name = $_.Name
